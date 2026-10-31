@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frank Freire · Portafolio</title>
+  <meta name="description" content="Portafolio de Frank Freire: mods de Minecraft, sistemas web con Django y scripts de Python.">
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Pixelify+Sans:wght@400;500;600;700&display=swap">
+
+  <!-- Aplica el tema guardado antes de pintar (evita el parpadeo claro/oscuro) -->
+  <script src="scripts/tema-inicial.js"></script>
+
+  <!-- Estilos: variables → base → componentes → secciones -->
+  <link rel="stylesheet" href="styles/variables.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/componentes.css">
+  <link rel="stylesheet" href="styles/secciones.css">
+</head>
+<body>
+
+  <!-- ===== Barra superior ===== -->
+  <header class="barra">
+    <div class="envoltura barra-in">
+      <a class="logo" href="#inicio" aria-label="Frank Freire, inicio"><span class="logo-cubo" aria-hidden="true"></span><span>frankex</span></a>
+      <nav class="enlaces" aria-label="Secciones">
+        <a href="#proyectos" data-i18n="nav.proy">Proyectos</a>
+        <a href="#sobre-mi" data-i18n="nav.sobre">Sobre mí</a>
+        <a href="#camino-sec" data-i18n="nav.camino">Mi camino</a>
+        <a href="#servicios" data-i18n="nav.serv">Servicios</a>
+        <a href="#contacto" data-i18n="nav.cont">Contacto</a>
+      </nav>
+      <div class="botones">
+        <button class="btn-mini" id="btn-idioma" type="button" aria-label="Switch to English">EN</button>
+        <button class="btn-mini" id="btn-tema" type="button" aria-label="Cambiar tema"></button>
+      </div>
+    </div>
+    <!-- Barra de experiencia: se llena según cuánto bajaste en la página -->
+    <div class="xp" title="Nivel 5 = 5.º semestre">
+      <div class="xp-relleno" id="xp-relleno"></div>
+      <span class="xp-nivel" id="xp-nivel" aria-hidden="true">5</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Portada ===== -->
+    <section class="heroe" id="inicio" aria-label="Presentación">
+      <canvas id="campo" aria-hidden="true"></canvas>
+      <div class="petalos" id="petalos" aria-hidden="true"></div>
+
+      <div class="envoltura heroe-in">
+        <div class="cartel pix">
+          <p class="saludo" data-i18n="hero.hola">¡Hola! Soy</p>
+          <h1 class="nombre" id="nombre">Frank Freire</h1>
+          <p class="bajada" data-i18n="hero.bajada">Estudiante de Ingeniería en Software en Ecuador. Hago mods de Minecraft, sistemas web con Django y scripts que le sacan el jugo a mi PC con Linux.</p>
+          <div class="acciones">
+            <a class="boton boton-1" href="#proyectos" data-i18n="hero.ver">Ver proyectos</a>
+            <a class="boton boton-2" href="https://www.fiverr.com/frank_freire" target="_blank" rel="noopener" data-i18n="hero.fiverr">Contratarme en Fiverr</a>
+          </div>
+          <div class="contadores">
+            <div class="contador"><b id="n-proyectos" data-cuenta="0">0</b><span data-i18n="hero.c1">proyectos</span></div>
+            <div class="contador"><b id="n-tecnologias" data-cuenta="0">0</b><span data-i18n="hero.c3">tecnologías</span></div>
+          </div>
+        </div>
+
+        <!-- Bloques 3D: las caras reciben su textura desde scripts/componentes/bloques.js -->
+        <div class="cubos">
+          <button class="voxel" type="button" data-bloque="cesped" aria-label="Bloque de césped: Java y mods de Minecraft">
+            <span class="flota"><span class="cubo"><span class="cara f"></span><span class="cara b"></span><span class="cara r"></span><span class="cara l"></span><span class="cara t"></span><span class="cara u"></span></span></span>
+            <span class="voxel-etq">Java</span>
+          </button>
+          <button class="voxel" type="button" data-bloque="amatista" aria-label="Bloque de amatista: Python y Django">
+            <span class="flota"><span class="cubo"><span class="cara f"></span><span class="cara b"></span><span class="cara r"></span><span class="cara l"></span><span class="cara t"></span><span class="cara u"></span></span></span>
+            <span class="voxel-etq">Python</span>
+          </button>
+          <button class="voxel" type="button" data-bloque="diamante" aria-label="Mena de diamante: Luau y Roblox">
+            <span class="flota"><span class="cubo"><span class="cara f"></span><span class="cara b"></span><span class="cara r"></span><span class="cara l"></span><span class="cara t"></span><span class="cara u"></span></span></span>
+            <span class="voxel-etq">Luau</span>
+          </button>
+        </div>
+      </div>
+      <p class="pista" data-i18n="hero.pista">Mueve el mouse sobre la lavanda · haz clic en el cielo o en los bloques</p>
+    </section>
+
+    <!-- ===== Proyectos (las tarjetas salen de scripts/datos/proyectos.js) ===== -->
+    <section class="seccion" id="proyectos" aria-labelledby="t-proy">
+      <div class="envoltura">
+        <div class="cabeza revela">
+          <p class="antetitulo" data-i18n="proy.ante">01 · Lo que he construido</p>
+          <h2 id="t-proy" data-i18n="proy.tit">Proyectos</h2>
+          <p class="intro" data-i18n="proy.intro">Proyectos de la universidad y propios: sistemas web con Django, programas en Python y mods de Minecraft.</p>
+        </div>
+        <div class="filtros" id="filtros" aria-label="Filtrar proyectos"></div>
+        <div class="rejilla" id="rejilla"></div>
+      </div>
+    </section>
+
+    <!-- ===== Sobre mí ===== -->
+    <section class="seccion alterna" id="sobre-mi" aria-labelledby="t-sobre">
+      <div class="envoltura sobre">
+        <div class="texto revela">
+          <p class="antetitulo" data-i18n="sobre.ante">02 · Quién soy</p>
+          <h2 id="t-sobre" data-i18n="sobre.tit">Sobre mí</h2>
+          <p data-i18n="sobre.p1">Soy <strong>Frank Freire</strong>, estudiante de <strong>Ingeniería en Software</strong> en la UNEMI, Ecuador (5.º semestre, me gradúo en 2028). Juego desde siempre y aprendo construyendo: si algo de mi PC o de un juego me molesta, lo arreglo y lo documento.</p>
+          <p data-i18n="sobre.p2">Además trabajo en trazabilidad de productos en una empresa exportadora y doy clases de Pensamiento Computacional en un proyecto de vinculación de la universidad.</p>
+
+          <h3 data-i18n="como.tit">Cómo trabajo</h3>
+          <ul class="como">
+            <li><span class="num">1</span><div><b data-i18n="como.1b">Documento todo</b><span data-i18n="como.1">Cada proyecto tiene sus notas: qué se hizo, por qué y cómo deshacerlo.</span></div></li>
+            <li><span class="num">2</span><div><b data-i18n="como.2b">Mido antes y después</b><span data-i18n="como.2">Temperaturas, FPS, puntuaciones o pruebas con copias de la base de datos. Nada de «creo que va mejor».</span></div></li>
+            <li><span class="num">3</span><div><b data-i18n="como.3b">Uso IA como copiloto</b><span data-i18n="como.3">Trabajo con Claude Code para ir más rápido; yo decido, pruebo y entiendo cada cambio.</span></div></li>
+            <li><span class="num">4</span><div><b data-i18n="como.4b">Explico en español o inglés</b><span data-i18n="como.4">Te cuento cada paso con palabras simples y entrego el código comentado.</span></div></li>
+          </ul>
+        </div>
+
+        <div class="revela">
+          <div class="inventario pix">
+            <h3 data-i18n="inv.tit">Inventario</h3>
+            <p class="inv-pista" data-i18n="inv.pista">Pasa el mouse por un espacio o pulsa las teclas 1–9</p>
+            <div class="hotbar" id="hotbar"></div>
+            <div class="inv-info" id="inv-info" aria-live="polite"></div>
+          </div>
+          <dl class="fichas">
+            <div class="ficha"><dt data-i18n="ficha.1t">Ubicación</dt><dd>Ecuador</dd></div>
+            <div class="ficha"><dt data-i18n="ficha.2t">Idiomas</dt><dd data-i18n="ficha.2">Español nativo, inglés intermedio</dd></div>
+            <div class="ficha"><dt data-i18n="ficha.3t">Estudios</dt><dd data-i18n="ficha.3">Ingeniería en Software, UNEMI</dd></div>
+            <div class="ficha"><dt data-i18n="ficha.4t">Trabajo</dt><dd data-i18n="ficha.4">Trazabilidad en una exportadora</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Mi camino (los hitos salen de scripts/datos/camino.js) ===== -->
+    <section class="seccion" id="camino-sec" aria-labelledby="t-camino">
+      <div class="envoltura">
+        <div class="cabeza revela">
+          <p class="antetitulo" data-i18n="camino.ante">03 · De dónde vengo</p>
+          <h2 id="t-camino" data-i18n="camino.tit">Mi camino</h2>
+          <p class="intro" data-i18n="camino.intro">De mi primer «Hola mundo» con Flask a mods y sistemas completos.</p>
+        </div>
+        <ol class="camino" id="camino"></ol>
+      </div>
+    </section>
+
+    <!-- ===== Servicios (salen de scripts/datos/servicios.js) ===== -->
+    <section class="seccion alterna" id="servicios" aria-labelledby="t-serv">
+      <div class="envoltura">
+        <div class="cabeza revela">
+          <p class="antetitulo" data-i18n="serv.ante">04 · Trabajemos juntos</p>
+          <h2 id="t-serv" data-i18n="serv.tit">Servicios</h2>
+          <p class="intro" data-i18n="serv.intro">Lo que puedes encargarme por Fiverr. El precio final depende de lo que necesites: escríbeme antes de pedir y lo vemos.</p>
+        </div>
+        <div class="servicios" id="lista-servicios"></div>
+        <p class="nota-fiverr" data-i18n="serv.nota">Pedidos, mensajes y pagos van siempre por Fiverr: así los dos estamos protegidos.</p>
+      </div>
+    </section>
+
+    <!-- ===== Contacto ===== -->
+    <section class="seccion" id="contacto" aria-labelledby="t-cont">
+      <div class="envoltura">
+        <div class="contacto pix revela">
+          <h2 id="t-cont" data-i18n="cont.tit">¿Tienes un proyecto en mente?</h2>
+          <p data-i18n="cont.txt">Cuéntame qué necesitas por Fiverr y te respondo rápido. También puedes ver mi código en GitHub.</p>
+          <div class="acciones">
+            <a class="boton boton-1" href="https://www.fiverr.com/frank_freire" target="_blank" rel="noopener" data-i18n="cont.fiverr">Escríbeme en Fiverr</a>
+            <a class="boton boton-2" href="https://github.com/FrankexPro" target="_blank" rel="noopener" data-i18n="cont.github">Mi GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie-pagina">
+    <div class="envoltura">
+      <span>© 2026 Frank Freire</span>
+      <span data-i18n="pie.2">Hecho con anime.js y pixel art dibujado en canvas · versión 2 de mi portafolio</span>
+    </div>
+  </footer>
+
+  <!-- Aviso de logro (estilo Minecraft) -->
+  <div class="logro" id="logro" role="status" hidden>
+    <span class="bloque" id="logro-bloque"></span>
+    <div><b class="logro-titulo"></b><span class="logro-texto"></span></div>
+  </div>
+
+  <!-- Punto de entrada: carga los módulos de JavaScript -->
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>

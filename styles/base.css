@@ -1,0 +1,105 @@
+/* ==========================================================================
+   Base: reinicio, tipografía y piezas que se usan en toda la página.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;            /* para que la barra fija no tape los títulos */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 17px/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+p { margin: 0; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--pixel);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: .01em;
+  text-wrap: balance;
+}
+
+/* Contenedor centrado */
+.envoltura { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* Marco pixel: bordes de 3 px con las esquinas recortadas */
+.pix {
+  --b: 3px;
+  --c: var(--edge);
+  margin: var(--b);
+  background: var(--surface);
+  box-shadow:
+    0 calc(var(--b) * -1) 0 0 var(--c),
+    0 var(--b) 0 0 var(--c),
+    calc(var(--b) * -1) 0 0 0 var(--c),
+    var(--b) 0 0 0 var(--c),
+    calc(var(--b) * 2) calc(var(--b) * 3) 0 0 var(--shadow);
+}
+
+/* Botones grandes estilo pixel */
+.acciones { display: flex; flex-wrap: wrap; gap: 14px 18px; }
+.boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 3px;
+  padding: 13px 20px;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  font: 600 16px/1 var(--pixel);
+  letter-spacing: .02em;
+  transition: transform .12s ease;
+  box-shadow:
+    0 -3px 0 0 var(--edge), 0 3px 0 0 var(--edge), -3px 0 0 0 var(--edge), 3px 0 0 0 var(--edge),
+    inset 0 -4px 0 0 rgba(0, 0, 0, .22), inset 0 3px 0 0 rgba(255, 255, 255, .22);
+}
+.boton:hover { transform: translateY(-2px); }
+.boton:active { transform: translateY(1px); }
+.boton-1 { background: var(--accent); color: var(--accent-ink); }
+.boton-2 { background: var(--surface); color: var(--ink); }
+
+/* Encabezado de cada sección */
+.seccion { padding: 104px 0; }
+.seccion.alterna { background: var(--bg-2); }
+.cabeza { max-width: 740px; margin-bottom: 40px; }
+.cabeza h2 { font-size: clamp(34px, 4.6vw, 54px); margin-bottom: 14px; }
+.antetitulo {
+  margin-bottom: 12px;
+  font: 600 13px/1.2 var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.intro { max-width: 62ch; font-size: 18px; color: var(--ink-2); }
+
+/* Elementos que aparecen al bajar: ocultos hasta que anime.js los muestra.
+   La clase .con-movimiento la pone scripts/main.js solo si hay animaciones. */
+.con-movimiento .revela:not(.visto) { opacity: 0; }
+
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .envoltura { padding: 0 16px; }
+  .seccion { padding: 72px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .boton { transition: none; }
+}

@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Variables: colores, fuentes y paleta del campo de lavanda.
+   El tema oscuro se activa solo (según el sistema) o con el botón,
+   que pone data-theme="dark" o "light" en <html>.
+   ========================================================================== */
+
+:root {
+  /* Interfaz */
+  --bg: #f6f3fc;
+  --bg-2: #eee7fa;
+  --surface: #ffffff;
+  --surface-2: #f3eefc;
+  --ink: #1c172e;
+  --ink-2: #4d4569;
+  --ink-3: #756d93;
+  --line: #ddd3f1;
+  --edge: #2a2241;          /* bordes pixel */
+  --spr-k: #2a2241;         /* contorno de los sprites */
+  --accent: #6847cf;
+  --accent-2: #9a7ff3;
+  --accent-soft: #ebe3fe;
+  --accent-ink: #ffffff;
+  --green: #3b8a34;
+  --xp: #7fd63c;
+  --gold: #d4951b;
+  --rose: #d65275;
+  --cyan: #2b9bcc;
+  --shadow: rgba(42, 34, 65, .16);
+  --panel: rgba(255, 255, 255, .84);
+
+  /* Campo de lavanda (los lee scripts/componentes/campo.js) */
+  --sky-top: #8a9ef1;
+  --sky-mid: #c7c1f6;
+  --sky-bot: #f1e9fb;
+  --haze: #e3d7f6;
+  --ground-far: #c1afe8;
+  --ground-near: #2c5126;
+  --lav-1: #d6c4ff;
+  --lav-2: #a487f1;
+  --lav-3: #6f4fcb;
+  --stem: #5d9c41;
+  --stem-2: #3a6c2b;
+  --globo-1: #f0a27a;
+  --globo-2: #fbe4c6;
+  --globo-3: #98b2f6;
+  --globo-4: #e98fae;
+
+  /* Fuentes */
+  --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --pixel: 'Pixelify Sans', 'Instrument Sans', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  color-scheme: light;
+}
+
+/* Tema oscuro del sistema (si no se eligió "claro" con el botón) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e0c1a; --bg-2: #141127; --surface: #19152f; --surface-2: #221d3e;
+    --ink: #efebfd; --ink-2: #bbb2dc; --ink-3: #9088b4;
+    --line: #332c56; --edge: #4a4080; --spr-k: #0b0916;
+    --accent: #b49dff; --accent-2: #7e60e6; --accent-soft: #2a2251; --accent-ink: #140f29;
+    --green: #62b552; --xp: #8fe34b; --gold: #e9b540; --rose: #f07e9b; --cyan: #5bc1ea;
+    --shadow: rgba(0, 0, 0, .5); --panel: rgba(22, 18, 42, .82);
+    --sky-top: #050820; --sky-mid: #191a4a; --sky-bot: #3a2c6b; --haze: #47387c;
+    --ground-far: #3c3070; --ground-near: #0b190e;
+    --lav-1: #bba5ff; --lav-2: #8668e3; --lav-3: #553ba5; --stem: #2f5c2b; --stem-2: #1f411d;
+    --globo-1: #c9714d; --globo-2: #dcc19e; --globo-3: #6680d0; --globo-4: #b8607f;
+    color-scheme: dark;
+  }
+}
+
+/* Tema oscuro elegido con el botón */
+:root[data-theme="dark"] {
+  --bg: #0e0c1a; --bg-2: #141127; --surface: #19152f; --surface-2: #221d3e;
+  --ink: #efebfd; --ink-2: #bbb2dc; --ink-3: #9088b4;
+  --line: #332c56; --edge: #4a4080; --spr-k: #0b0916;
+  --accent: #b49dff; --accent-2: #7e60e6; --accent-soft: #2a2251; --accent-ink: #140f29;
+  --green: #62b552; --xp: #8fe34b; --gold: #e9b540; --rose: #f07e9b; --cyan: #5bc1ea;
+  --shadow: rgba(0, 0, 0, .5); --panel: rgba(22, 18, 42, .82);
+  --sky-top: #050820; --sky-mid: #191a4a; --sky-bot: #3a2c6b; --haze: #47387c;
+  --ground-far: #3c3070; --ground-near: #0b190e;
+  --lav-1: #bba5ff; --lav-2: #8668e3; --lav-3: #553ba5; --stem: #2f5c2b; --stem-2: #1f411d;
+  --globo-1: #c9714d; --globo-2: #dcc19e; --globo-3: #6680d0; --globo-4: #b8607f;
+  color-scheme: dark;
+}
